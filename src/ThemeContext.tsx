@@ -19,7 +19,7 @@ interface ProvideThemeContextProps {
 const ProvideThemeContext: React.FC<ProvideThemeContextProps> = ({
     children,
 }) => {
-    const [theme, setTheme] = useState<Theme | null>("light")
+    const [theme, setTheme] = useState<Theme>("light")
 
     useEffect(() => {
         // add dark class to html
