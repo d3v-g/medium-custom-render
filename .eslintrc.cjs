@@ -22,4 +22,7 @@ module.exports = {
             typescript: {},
         },
     },
+    globals: {
+        vi: true,
+    },
 }

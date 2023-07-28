@@ -1,6 +1,10 @@
 import { createContext, useEffect, useState } from "react"
 
-type Theme = "dark" | "light"
+//eslint-disable-next-line react-refresh/only-export-components
+export enum Theme {
+    DARK,
+    LIGHT,
+}
 
 interface ThemeContextProps {
     theme: Theme | null
@@ -19,12 +23,13 @@ interface ProvideThemeContextProps {
 const ProvideThemeContext: React.FC<ProvideThemeContextProps> = ({
     children,
 }) => {
-    const [theme, setTheme] = useState<Theme>("light")
+    const [theme, setTheme] = useState(Theme.LIGHT)
 
     useEffect(() => {
         // add dark class to html
-        if (theme === "dark") document.documentElement.classList.add("dark")
-        if (theme === "light") document.documentElement.classList.remove("dark")
+        if (theme === Theme.DARK) document.documentElement.classList.add("dark")
+        if (theme === Theme.LIGHT)
+            document.documentElement.classList.remove("dark")
     }, [theme])
 
     const value = {

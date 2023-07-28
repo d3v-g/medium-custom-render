@@ -1,8 +1,16 @@
+import { MemoryRouter } from "react-router-dom"
 import App from "./App"
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 
 describe("app", () => {
     it("renders properly", () => {
-        render(<App />)
+        render(
+            <MemoryRouter initialEntries={["/"]}>
+                <App />,
+            </MemoryRouter>,
+        )
+
+        const main = screen.getByRole("main")
+        expect(main).toBeInTheDocument()
     })
 })
