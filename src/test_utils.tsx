@@ -3,28 +3,28 @@ import { render } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import userEvent from "@testing-library/user-event"
 import { ReactElement } from "react"
-// import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 const defaultTheme = {
     theme: Theme.LIGHT,
     setTheme: () => vi.fn(),
 }
 
-// let queryClient
+let queryClient: QueryClient | null
 
-// export function setQueryClient() {
-//     queryClient = new QueryClient({
-//         defaultOptions: {
-//             queries: {
-//                 retry: false,
-//             },
-//         },
-//     })
-// }
+export function setupQueryClient() {
+    queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                retry: false,
+            },
+        },
+    })
+}
 
-// export function clearQueryClient() {
-//     queryClient = null
-// }
+export function clearQueryClient() {
+    queryClient = null
+}
 
 export const customRender = (
     ui: ReactElement,
@@ -38,7 +38,13 @@ export const customRender = (
         return (
             <ThemeContext.Provider value={theme}>
                 <MemoryRouter initialEntries={initialEntries}>
-                    {children}
+                    {queryClient ? (
+                        <QueryClientProvider client={queryClient}>
+                            {children}
+                        </QueryClientProvider>
+                    ) : (
+                        children
+                    )}
                 </MemoryRouter>
             </ThemeContext.Provider>
         )

@@ -1,14 +1,17 @@
-import { MemoryRouter } from "react-router-dom"
 import App from "./App"
-import { render, screen } from "@testing-library/react"
+import {
+    clearQueryClient,
+    render,
+    screen,
+    setupQueryClient,
+} from "./test_utils"
 
 describe("app", () => {
+    beforeAll(() => setupQueryClient())
+    afterAll(() => clearQueryClient())
+
     it("renders properly", () => {
-        render(
-            <MemoryRouter initialEntries={["/"]}>
-                <App />,
-            </MemoryRouter>,
-        )
+        render(<App />)
 
         const main = screen.getByRole("main")
         expect(main).toBeInTheDocument()
