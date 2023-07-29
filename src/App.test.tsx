@@ -12,7 +12,6 @@ describe("app", () => {
 
     it("renders properly", () => {
         render(<App />)
-
         const main = screen.getByRole("main")
         expect(main).toBeInTheDocument()
     })

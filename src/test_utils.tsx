@@ -1,14 +1,9 @@
-import { ThemeContext, Theme } from "./ThemeContext"
-import { render } from "@testing-library/react"
+import { ThemeContext, IThemeContext, Theme } from "./ThemeContext"
+import { render, RenderOptions } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import userEvent from "@testing-library/user-event"
 import { ReactElement } from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-
-const defaultTheme = {
-    theme: Theme.LIGHT,
-    setTheme: () => vi.fn(),
-}
 
 let queryClient: QueryClient | null
 
@@ -26,20 +21,29 @@ export function clearQueryClient() {
     queryClient = null
 }
 
+interface IExtendedRenderOptions extends RenderOptions {
+    theme?: IThemeContext
+    initialEntries?: string[]
+    queryClient?: QueryClient
+}
+
 export const customRender = (
     ui: ReactElement,
-    { theme = defaultTheme, initialEntries = ["/"], ...options } = {},
+    options?: Omit<IExtendedRenderOptions, "wrapper">,
 ) => {
-    interface WrapperProps {
-        children?: React.ReactNode
+    const defaultTheme: IThemeContext = {
+        theme: Theme.LIGHT,
+        setTheme: vi.fn(),
     }
-    // wrap contexts
-    const Wrapper: React.FC<WrapperProps> = ({ children }) => {
+
+    const Wrapper = ({ children }: { children: React.ReactNode }) => {
         return (
-            <ThemeContext.Provider value={theme}>
-                <MemoryRouter initialEntries={initialEntries}>
+            <ThemeContext.Provider value={options?.theme ?? defaultTheme}>
+                <MemoryRouter initialEntries={options?.initialEntries ?? ["/"]}>
                     {queryClient ? (
-                        <QueryClientProvider client={queryClient}>
+                        <QueryClientProvider
+                            client={options?.queryClient ?? queryClient}
+                        >
                             {children}
                         </QueryClientProvider>
                     ) : (

@@ -6,23 +6,17 @@ export enum Theme {
     LIGHT,
 }
 
-interface ThemeContextProps {
+export interface IThemeContext {
     theme: Theme | null
     setTheme: (theme: Theme) => void
 }
 
-export const ThemeContext = createContext<ThemeContextProps>({
+export const ThemeContext = createContext<IThemeContext>({
     theme: null,
     setTheme: () => null,
 })
 
-interface ProvideThemeContextProps {
-    children?: React.ReactNode
-}
-
-const ProvideThemeContext: React.FC<ProvideThemeContextProps> = ({
-    children,
-}) => {
+const ProvideThemeContext = ({ children }: { children: React.ReactNode }) => {
     const [theme, setTheme] = useState(Theme.LIGHT)
 
     useEffect(() => {
