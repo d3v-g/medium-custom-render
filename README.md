@@ -6,7 +6,7 @@ This project demonstrates how you can make a reusable custom render function for
 This project is built using Vite and can be run using the following scripts:
 ### Clone the repo
 ```
-git clone https://github.com/d3v-g/medium-react-accordion-hoc
+git clone https://github.com/d3v-g/medium-custom-render
 ```
 ### Install dependencies
 ```
