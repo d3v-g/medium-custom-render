@@ -41,9 +41,7 @@ export const customRender = (
             <ThemeContext.Provider value={options?.theme ?? defaultTheme}>
                 <MemoryRouter initialEntries={options?.initialEntries ?? ["/"]}>
                     {queryClient ? (
-                        <QueryClientProvider
-                            client={options?.queryClient ?? queryClient}
-                        >
+                        <QueryClientProvider client={queryClient}>
                             {children}
                         </QueryClientProvider>
                     ) : (
@@ -58,6 +56,7 @@ export const customRender = (
 
     return {
         user: userEvent.setup(),
+        queryClient,
         ...result,
     }
 }
