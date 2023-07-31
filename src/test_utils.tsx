@@ -9,22 +9,16 @@ import {
     QueryClientConfig,
 } from "@tanstack/react-query"
 
-let queryClient: QueryClient | null
-
 export function setupQueryClient(config?: QueryClientConfig | undefined) {
     if (!config) {
-        queryClient = new QueryClient({
+        return new QueryClient({
             defaultOptions: {
                 queries: {
                     retry: false,
                 },
             },
         })
-    } else queryClient = new QueryClient(config)
-}
-
-export function clearQueryClient() {
-    queryClient = null
+    } else return new QueryClient(config)
 }
 
 interface IExtendedRenderOptions extends RenderOptions {
@@ -46,8 +40,8 @@ export const customRender = (
         return (
             <ThemeContext.Provider value={options?.theme ?? defaultTheme}>
                 <MemoryRouter initialEntries={options?.initialEntries ?? ["/"]}>
-                    {queryClient ? (
-                        <QueryClientProvider client={queryClient}>
+                    {options?.queryClient ? (
+                        <QueryClientProvider client={options?.queryClient}>
                             {children}
                         </QueryClientProvider>
                     ) : (
@@ -62,7 +56,6 @@ export const customRender = (
 
     return {
         user: userEvent.setup(),
-        queryClient,
         ...result,
     }
 }
