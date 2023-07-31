@@ -17,7 +17,8 @@ export function setupQueryClient(config?: QueryClientConfig | undefined) {
                 },
             },
         })
-    } else return new QueryClient(config)
+    }
+    return new QueryClient(config)
 }
 
 interface IExtendedRenderOptions extends RenderOptions {
