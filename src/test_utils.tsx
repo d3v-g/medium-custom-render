@@ -3,18 +3,24 @@ import { render, RenderOptions } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import userEvent from "@testing-library/user-event"
 import { ReactElement } from "react"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import {
+    QueryClient,
+    QueryClientProvider,
+    QueryClientConfig,
+} from "@tanstack/react-query"
 
 let queryClient: QueryClient | null
 
-export function setupQueryClient() {
-    queryClient = new QueryClient({
-        defaultOptions: {
-            queries: {
-                retry: false,
+export function setupQueryClient(config?: QueryClientConfig | undefined) {
+    if (!config) {
+        queryClient = new QueryClient({
+            defaultOptions: {
+                queries: {
+                    retry: false,
+                },
             },
-        },
-    })
+        })
+    } else queryClient = new QueryClient(config)
 }
 
 export function clearQueryClient() {
