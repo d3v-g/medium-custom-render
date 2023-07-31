@@ -1,12 +1,23 @@
 # React Testing Library Custom Render
 This project demonstrates how you can make a reusable custom render function for testing components that rely on React's Context, with the flexibility of using default context, or the specified context in an individual test senario.
 
-<!-- Link to my Medium article detailing the thought process behind having this custom render method:  -->
+Link to my Medium article: https://medium.com/@janesfrontenddiary/a-reusable-way-to-test-react-components-that-make-use-of-react-context-a82150344c46#d1de
+
 ## TLDR
 You can find the custom render function [here](/src/test-utils.tsx).  
-You can find an example using React's Context [here](/src/components/ThemeExample.test.tsx).  
-You can find an example using react-router-dom [here](/src/components/RouterExample.test.tsx).  
-You can find an example using React Query [here](/src/components/QueryExample.test.tsx).
+You can find an example using React's Context [here](/src/examples/ThemeExample.test.tsx).  
+You can find an example using react-router-dom [here](/src/examples/RouterExample.test.tsx).  
+You can find an example using React Query [here](/src/examples/QueryExample.test.tsx).
+
+## Tech stack
+- React(v18) + Vite
+- Typescript
+- Tailwind CSS
+- Vitest + React Testing Library
+
+## Tooling
+- Eslint
+- Prettier, Prettier Tailwind plugin
 
 ## How to run
 This project is built using Vite and can be run using the following scripts:
@@ -22,6 +33,8 @@ npm install
 ```
 npm run dev
 ```
+
+## Scripts
 ### Run tests with Vitest
 ```
 npm run test
