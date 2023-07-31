@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
-import ThemeExample from "./components/ThemeExample"
-import RouterExample from "./components/RouterExample"
-import QueryExample from "./components/QueryExample"
+import ThemeExample from "./examples/ThemeExample"
+import RouterExample from "./examples/RouterExample"
+import QueryExample from "./examples/QueryExample"
 
 const App: React.FC = () => {
     return (

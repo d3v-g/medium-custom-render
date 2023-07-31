@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Styled navlink > renders active styles correctly 1`] = `
+<div>
+  <a
+    aria-current="page"
+    class="w-20 rounded-lg border  py-2 shadow-lg bg-red-500 dark:bg-red-900"
+    href="/test-path"
+  >
+    Test label
+  </a>
+</div>
+`;
+
+exports[`Styled navlink > renders inactive styles correctly 1`] = `
+<div>
+  <a
+    class="w-20 rounded-lg border  py-2 shadow-lg bg-lime-900 dark:bg-green-900"
+    href="/some-other-path"
+  >
+    Test label
+  </a>
+</div>
+`;
