@@ -4,7 +4,7 @@ exports[`Styled navlink > renders active styles correctly 1`] = `
 <div>
   <a
     aria-current="page"
-    class="w-20 rounded-lg border  py-2 shadow-lg bg-red-500 dark:bg-red-900"
+    class="w-20 rounded-lg border py-2 shadow-lg bg-red-500 dark:bg-red-900"
     href="/test-path"
   >
     Test label
@@ -15,7 +15,7 @@ exports[`Styled navlink > renders active styles correctly 1`] = `
 exports[`Styled navlink > renders inactive styles correctly 1`] = `
 <div>
   <a
-    class="w-20 rounded-lg border  py-2 shadow-lg bg-lime-900 dark:bg-green-900"
+    class="w-20 rounded-lg border py-2 shadow-lg bg-lime-900 dark:bg-green-900"
     href="/some-other-path"
   >
     Test label
