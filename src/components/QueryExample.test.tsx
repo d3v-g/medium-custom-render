@@ -1,4 +1,4 @@
-import { render, screen, setupQueryClient, waitFor } from "../test_utils"
+import { render, screen, setupQueryClient, waitFor } from "../test-utils"
 import QueryExample from "./QueryExample"
 
 describe("Query example", () => {

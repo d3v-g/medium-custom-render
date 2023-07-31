@@ -1,4 +1,4 @@
-import { render, screen } from "../test_utils"
+import { render, screen } from "../test-utils"
 import RouterExample from "./RouterExample"
 
 describe("Router example", () => {

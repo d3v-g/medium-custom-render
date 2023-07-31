@@ -1,6 +1,6 @@
 import { QueryClient } from "@tanstack/react-query"
 import App from "./App"
-import { render, screen, setupQueryClient } from "./test_utils"
+import { render, screen, setupQueryClient } from "./test-utils"
 
 describe("App", () => {
     let queryClient: QueryClient
