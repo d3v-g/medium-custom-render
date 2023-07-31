@@ -1,5 +1,6 @@
 import { render, screen, setupQueryClient, waitFor } from "../test-utils"
 import QueryExample from "./QueryExample"
+import userEvent from "@testing-library/user-event"
 
 describe("Query example", () => {
     it("shows 0 fetch count initially", async () => {
@@ -12,7 +13,8 @@ describe("Query example", () => {
 
     it("shows 1 fetch count when user clicks button to fetch data", async () => {
         const queryClient = setupQueryClient()
-        const { user } = render(<QueryExample />, { queryClient })
+        const user = userEvent.setup()
+        render(<QueryExample />, { queryClient })
         const button = screen.getByRole("button", { name: /fetch some data/i })
         await user.click(button)
         const text = screen.getByText("Fetch count: 1")
@@ -21,7 +23,8 @@ describe("Query example", () => {
 
     it("shows 2 fetch count when user clicks button to fetch data twice", async () => {
         const queryClient = setupQueryClient()
-        const { user } = render(<QueryExample />, { queryClient })
+        const user = userEvent.setup()
+        render(<QueryExample />, { queryClient })
         const button = screen.getByRole("button", { name: /fetch some data/i })
         await user.click(button)
         await user.click(button)

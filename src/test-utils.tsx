@@ -1,7 +1,7 @@
 import { ThemeContext, IThemeContext, Theme } from "./ThemeContext"
 import { render, RenderOptions } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
-import userEvent from "@testing-library/user-event"
+// import userEvent from "@testing-library/user-event"
 import { ReactElement } from "react"
 import {
     QueryClient,
@@ -52,12 +52,12 @@ export const customRender = (
         )
     }
 
-    const result = render(ui, { wrapper: Wrapper, ...options })
+    return render(ui, { wrapper: Wrapper, ...options })
 
-    return {
-        user: userEvent.setup(),
-        ...result,
-    }
+    // return {
+    //     user: userEvent.setup(),
+    //     ...result,
+    // }
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

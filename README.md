@@ -1,5 +1,5 @@
 # React Testing Library Custom Render
-This project demonstrates how you can make a reusable custom render function for testing components that rely on React's Context, with the flexibility of using default context, or the specified context in an individual test senario, and with the further added benefit of setting up a user object for user events.
+This project demonstrates how you can make a reusable custom render function for testing components that rely on React's Context, with the flexibility of using default context, or the specified context in an individual test senario.
 
 <!-- Link to my Medium article detailing the thought process behind having this custom render method:  -->
 ## TLDR

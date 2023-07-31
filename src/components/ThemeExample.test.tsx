@@ -1,6 +1,7 @@
 import { render, screen } from "../test-utils"
 import { Theme } from "../ThemeContext"
 import ThemeExample from "./ThemeExample"
+import userEvent from "@testing-library/user-event"
 
 describe("Theme example", () => {
     it("displays dark mode is off in light theme", () => {
@@ -19,7 +20,8 @@ describe("Theme example", () => {
     })
     it("calls setTheme() when change theme button is clicked", async () => {
         const spy = vi.fn()
-        const { user } = render(<ThemeExample />, {
+        const user = userEvent.setup()
+        render(<ThemeExample />, {
             theme: { theme: Theme.LIGHT, setTheme: spy },
         })
         const button = screen.getByRole("button", { name: "Change Theme" })
@@ -28,7 +30,8 @@ describe("Theme example", () => {
     })
     it("calls setTheme() with the LIGHT enum when change theme button is clicked in dark mode", async () => {
         const spy = vi.fn()
-        const { user } = render(<ThemeExample />, {
+        const user = userEvent.setup()
+        render(<ThemeExample />, {
             theme: { theme: Theme.DARK, setTheme: spy },
         })
         const button = screen.getByRole("button", { name: "Change Theme" })
@@ -37,7 +40,8 @@ describe("Theme example", () => {
     })
     it("calls setTheme() with the DARK enum when change theme button is clicked in light mode", async () => {
         const spy = vi.fn()
-        const { user } = render(<ThemeExample />, {
+        const user = userEvent.setup()
+        render(<ThemeExample />, {
             theme: { theme: Theme.LIGHT, setTheme: spy },
         })
         const button = screen.getByRole("button", { name: "Change Theme" })
