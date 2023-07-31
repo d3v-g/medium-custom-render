@@ -1,7 +1,7 @@
 # React Testing Library Custom Render
 This project demonstrates how you can make a reusable custom render function for testing components that rely on React's Context, with the flexibility of using default context, or the specified context in an individual test senario.
 
-Link to my Medium article: https://medium.com/@janesfrontenddiary/a-reusable-way-to-test-react-components-that-make-use-of-react-context-a82150344c46#d1de
+Link to my Medium article: https://medium.com/@janesfrontenddiary/a-reusable-way-to-test-react-components-that-make-use-of-react-context-a82150344c46
 
 ## TLDR
 You can find the custom render function [here](/src/test-utils.tsx).  
