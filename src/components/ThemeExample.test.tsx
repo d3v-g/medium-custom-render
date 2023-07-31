@@ -3,19 +3,19 @@ import { Theme } from "../ThemeContext"
 import ThemeExample from "./ThemeExample"
 
 describe("Theme example", () => {
-    test("heading element displays dark mode is off in light theme", () => {
+    it("displays dark mode is off in light theme", () => {
         render(<ThemeExample />, {
             theme: { theme: Theme.LIGHT, setTheme: vi.fn() },
         })
-        const heading = screen.getByRole("heading", { level: 1 })
-        expect(heading).toHaveTextContent("Dark mode: Off")
+        const text = screen.getByText("Dark mode: Off")
+        expect(text).toBeInTheDocument()
     })
-    test("heading element displays dark mode is on in dark theme", () => {
+    it("displays dark mode is on in dark theme", () => {
         render(<ThemeExample />, {
             theme: { theme: Theme.DARK, setTheme: vi.fn() },
         })
-        const heading = screen.getByRole("heading", { level: 1 })
-        expect(heading).toHaveTextContent("Dark mode: On")
+        const text = screen.getByText("Dark mode: On")
+        expect(text).toBeInTheDocument()
     })
     it("calls setTheme() when change theme button is clicked", async () => {
         const spy = vi.fn()

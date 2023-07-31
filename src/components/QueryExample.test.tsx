@@ -11,8 +11,9 @@ describe("Query example", () => {
     it("shows 0 fetch count initially", async () => {
         setupQueryClient()
         render(<QueryExample />)
-        const header = screen.getByRole("heading", { level: 1 })
-        await waitFor(() => expect(header).toHaveTextContent("Fetch count: 0"))
+        await waitFor(() =>
+            expect(screen.getByText("Fetch count: 0")).toBeInTheDocument(),
+        )
         clearQueryClient()
     })
 
@@ -21,8 +22,8 @@ describe("Query example", () => {
         const { user } = render(<QueryExample />)
         const button = screen.getByRole("button", { name: /fetch some data/i })
         await user.click(button)
-        const header = screen.getByRole("heading", { level: 1 })
-        expect(header).toHaveTextContent("Fetch count: 1")
+        const text = screen.getByText("Fetch count: 1")
+        expect(text).toBeInTheDocument()
         clearQueryClient()
     })
 
